@@ -47,32 +47,37 @@ var airDom = document.getElementById("radio-air-horn");
 var carDom = document.getElementById("radio-car-horn");
 var partyDom = document.getElementById("radio-party-horn");
 var image_num = 1;
-var audio = new Audio("./assets/media/audio/air-horn.mp3");;
+var audio = new Audio("./assets/media/audio/air-horn.mp3");
 
 airDom.onclick = function () {
     image_num = 1;
     imageDom.src = "./assets/media/images/air-horn.svg";
-    audio = new Audio("./assets/media/audio/air-horn.mp3");;
 };
 
 carDom.onclick = function () {
     image_num = 2;
     imageDom.src = "./assets/media/images/car.svg";
-    audio = new Audio("./assets/media/audio/car-horn.mp3");
 };
 
 partyDom.onclick = function () {
     image_num = 3;
     imageDom.src = "./assets/media/images/party-horn.svg";
-    audio = new Audio("./assets/media/audio/party-horn.mp3");
 };
 
 honkDom.onclick = function (event) {
     event.preventDefault();
 
+    if (image_num == 1) {
+        audio = new Audio("./assets/media/audio/air-horn.mp3");
+    } else if (image_num == 2) {
+        audio = new Audio("./assets/media/audio/car-horn.mp3");
+    } else {
+        audio = new Audio("./assets/media/audio/party-horn.mp3");
+    }
+
     audio.volume = value / 100;
     audio.play();
-}
+};
 
 
 
